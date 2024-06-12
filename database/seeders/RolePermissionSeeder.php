@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Seeder\Permission;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RolePermissionSeeder extends Seeder
 {
@@ -26,5 +27,24 @@ class RolePermissionSeeder extends Seeder
                 'name' => $permission
             ]); 
         }
+
+        $teacherRole = Role::create([
+            'name' => 'teacher'
+        ]);
+
+        $teacherRole->givePermissionTo([
+            'view courses',
+            'create courses',
+            'edit courses',
+            'delete courses',
+        ]);
+
+        $studentRole = Role::create([
+            'name' => 'student'
+        ]);
+
+        $studentRole->givePermissionTo([
+            'view courses',
+        ]);
     }
 }
