@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class RolePermissionSeeder extends Seeder
 {
@@ -50,7 +51,10 @@ class RolePermissionSeeder extends Seeder
         // membuat data user superadmin
         $user = User::create([
             'name' => 'Asep',
-            'teacher' => 'asep@mail.com'
+            'email' => 'asep@teacher.com',
+            'password' => bcrypt('12345678')
         ]);
+
+        $user->assignRole($teacherRole);
     }
 }
