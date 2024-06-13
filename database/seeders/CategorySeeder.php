@@ -16,9 +16,24 @@ class CategorySeeder extends Seeder
     {
         //
         DB::table('categories')->insert([
+            [
             'name' => 'Programming',
             'slug' => 'programming',
             'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            ],
+            [
+            'name' => 'Umum',
+            'slug' => 'umum',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            ],
+            [
+            'name' => 'Diniyah',
+            'slug' => 'diniyah',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            ],
         ]);
     }
 }
