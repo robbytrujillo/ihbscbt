@@ -46,5 +46,11 @@ class RolePermissionSeeder extends Seeder
         $studentRole->givePermissionTo([
             'view courses',
         ]);
+
+        // membuat data user superadmin
+        $user = User::create([
+            'name' => 'Asep',
+            'teacher' => 'asep@mail.com'
+        ]);
     }
 }
