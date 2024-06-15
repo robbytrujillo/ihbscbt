@@ -10,6 +10,7 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
+    // melindungi ID (sebagai primary key) saat melakukan proses insert data
     protected $guarded = [
         'id',
     ];
