@@ -15,6 +15,8 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         //
+         dd('Seeder running');
+
         DB::table('categories')->insert([
             [
             'name' => 'Programming',
@@ -35,5 +37,7 @@ class CategorySeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
         ]);
+
+        dd('Data inserted');
     }
 }
