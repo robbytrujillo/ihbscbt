@@ -14,5 +14,7 @@ class StudentAnswer extends Model
         'id',
     ];
 
-    
+    public function question() {
+        return $this->belongsTo(CourseQuestion::class, 'corse_question_id');
+    }
 }
