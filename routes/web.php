@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseQuestionController;
+use App\Http\Controllers\CourseStudentController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentAnswerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,9 +34,43 @@ Route::middleware('auth')->group(function () {
             ->middleware('role:teacher')
             ->name('course.create.question.store');
 
+        Route::resource('course_questions', CourseQuestionController::class)
+            ->middleware('role:teacher');
+
+        Route::get('/course.students/show/{course}', [CourseStudentController::class, 'index'])
+            ->middleware('role.teacher')
+            ->name('course.course_student.index');
+        
+        // teacher menambahkan student baru
+        Route::get('/course.students/create/{course}', [CourseStudentController::class, 'create'])
+            ->middleware('role.teacher')
+            ->name('course.course_student.create');
+        
+        Route::post('/course.students/create/save/{course}', [CourseStudentController::class, 'store'])
+            ->middleware('role.teacher')
+            ->name('course.course_student.store');
+
+        // student
+        Route::get('/learning/finished/{course}', [LearningController::class, 'learning_finished'])
+            ->middleware('role.student')
+            ->name('learning_finished.course');
+       
+            Route::get('/learning/rapport/{course}', [LearningController::class, 'learning_rapport'])
+            ->middleware('role.student')
+            ->name('learning_rapport.course');
+
+        // menampilkan beberapa kelas yang diberikan oleh guru
         Route::get('/learning', [LearningController::class, 'index'])
             ->middleware('role:student')
             ->name('learning.index');
+       
+        Route::get('/learning/{course}/{question}', [LearningController::class, 'learning'])
+            ->middleware('role:student')
+            ->name('learning.course');
+        
+        Route::post('/learning/{course}/{question}', [StudentAnswerController::class, 'store'])
+            ->middleware('role:student')
+            ->name('learning.course.answer.store');
 
     }); 
 });
