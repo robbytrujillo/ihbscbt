@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         //
-         dd('Seeder running');
+        //  dd('Seeder running');
 
         DB::table('categories')->insert([
             [
@@ -38,6 +38,6 @@ class CategorySeeder extends Seeder
             ],
         ]);
 
-        dd('Data inserted');
+        // dd('Data inserted');
     }
 }
