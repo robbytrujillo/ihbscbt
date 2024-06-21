@@ -21,11 +21,20 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('dashboard')->name('dashboard.')->group(function() {
 
-        Route::resource('courses', CourseController::class)->middleware('role:teacher');
+        Route::resource('courses', CourseController::class)
+            ->middleware('role:teacher');
 
-        Route::get('/course/question/create/{course}', [CourseQuestionController::class], 'store')->middleware('role:teacher')->name('course.create.question.store');
+        Route::get('/course/question/create/{course}', [CourseQuestionController::class, 'create'])
+            ->middleware('role:teacher')
+            ->name('course.create.question');
+        
+        Route::post('/course/question/save/{course}', [CourseQuestionController::class, 'store'])
+            ->middleware('role:teacher')
+            ->name('course.create.question.store');
 
-        Route::get('/learning', [LearningController::class, 'index'])->middleware('role:student')->name('learning.index');
+        Route::get('/learning', [LearningController::class, 'index'])
+            ->middleware('role:student')
+            ->name('learning.index');
 
     }); 
 });
