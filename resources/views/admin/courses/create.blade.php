@@ -11,7 +11,7 @@
         <div id="sidebar" class="w-[270px] flex flex-col shrink-0 min-h-screen justify-between p-[30px] border-r border-[#EEEEEE] bg-[#FBFBFB]">
             <div class="w-full flex flex-col gap-[30px]">
                 <a href="index.html" class="flex items-center justify-center">
-                    <img src="{{asset('images/logo/ihbslogonew.png')}}" alt="logo">
+                    <img src="{{asset('images/logo/ihbscbt-logo.png')}}" alt="logo">
                 </a>
                 <ul class="flex flex-col gap-3">
                     <li>
