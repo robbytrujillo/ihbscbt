@@ -156,7 +156,7 @@
             <form method="POST" action="{{ route('dashboard.courses.store') }}" class="flex flex-col gap-[30px] w-[500px] mx-[70px] mt-10">
                 @csrf
                 <div class="flex items-center gap-5">
-                    <input type="file" name="icon" id="icon" class="hidden peer" onchange="previewFile()" data-empty="true" required>
+                    <input type="file" name="cover" id="icon" class="hidden peer" onchange="previewFile()" data-empty="true" required>
                     <div class="relative w-[100px] h-[100px] rounded-full overflow-hidden peer-data-[empty=true]:border-[3px] peer-data-[empty=true]:border-dashed peer-data-[empty=true]:border-[#EEEEEE]">
                         <div class="relative z-10 hidden w-full h-full file-preview">
                             <img src="" class="object-cover w-full h-full thumbnail-icon" alt="thumbnail">
@@ -182,10 +182,14 @@
                         <div class="mr-[10px] w-6 h-6 flex items-center justify-center overflow-hidden">
                             <img src="{{asset('images/icons/bill.svg')}}" class="object-contain w-full h-full" alt="icon">
                         </div>
-                        <select id="category" class="pl-1 font-semibold focus:outline-none w-full text-[#0A090B] invalid:text-[#7F8190] invalid:font-normal appearance-none bg-[url('{{asset('images/icons/arrow-down.svg')}}] bg-no-repeat bg-right" name="category" required>
+                        <select id="category" class="pl-1 font-semibold focus:outline-none w-full text-[#0A090B] invalid:text-[#7F8190] invalid:font-normal appearance-none bg-[url('{{asset('images/icons/arrow-down.svg')}}] bg-no-repeat bg-right" name="category_id" required>
                             <option value="" disabled selected hidden>Choose one of category</option>
-                            <option value="a" class="font-semibold">Digital Marketing</option>
-                            <option value="b" class="font-semibold">Web Development</option>
+                            @forelse ($categories as $category)
+                                <option value="{{ $category->id }}" class="font-semibold">{{ $category->name }}</option>    
+                            @empty
+                                
+                            @endforelse
+                            
                         </select>
                     </div>
                 </div>
@@ -267,7 +271,7 @@
                 </label>
                 <div class="flex items-center gap-5">
                     <a href="" class="w-full h-[52px] p-[14px_20px] bg-[#0A090B] rounded-full font-semibold text-white transition-all duration-300 text-center">Add to Draft</a>
-                    <a href="index.html" class="w-full h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D] text-center">Save Course</a>
+                    <button type="submit" class="w-full h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D] text-center">Save Course</button>
                 </div>
             </form>
         </div>
