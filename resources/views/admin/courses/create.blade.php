@@ -153,7 +153,8 @@
                 <h1 class="font-extrabold text-[30px] leading-[45px]">New Course</h1>
                 <p class="text-[#7F8190]">Provide high quality for best students</p>
             </div>
-            <form class="flex flex-col gap-[30px] w-[500px] mx-[70px] mt-10">
+            <form method="POST" action="{{ route('dashboard.courses.store') }}" class="flex flex-col gap-[30px] w-[500px] mx-[70px] mt-10">
+                @csrf
                 <div class="flex items-center gap-5">
                     <input type="file" name="icon" id="icon" class="hidden peer" onchange="previewFile()" data-empty="true" required>
                     <div class="relative w-[100px] h-[100px] rounded-full overflow-hidden peer-data-[empty=true]:border-[3px] peer-data-[empty=true]:border-dashed peer-data-[empty=true]:border-[#EEEEEE]">
