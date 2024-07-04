@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -37,8 +39,20 @@ class CourseController extends Controller
         //
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'cover' => 'required|image|mimes:png,jpg',
+            'category_id' => 'required|integer',
+            'cover' => 'required|image|mimes:png,jpg,svg',
         ]);
+
+        DB::beginTransaction();
+
+        try {
+            if ($request->hasFile('cover')){
+                $coverPath = $request->file('cover')->store('product_covers', 'public');
+                $validated['cover'] = $coverPath;
+            }
+            $validated['slug'] = Str::slug($request->name);
+            $new
+        }
     }
 
     /**
