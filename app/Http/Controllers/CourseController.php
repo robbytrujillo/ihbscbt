@@ -51,7 +51,15 @@ class CourseController extends Controller
                 $validated['cover'] = $coverPath;
             }
             $validated['slug'] = Str::slug($request->name);
-            $new
+            $newCourse = Course::create($validated);
+
+            DB::commit();
+
+            return redirect()->route('dashboard.courses.index');
+        }
+
+        catch(\Exception $e) {
+            DB::rollBack();
         }
     }
 
