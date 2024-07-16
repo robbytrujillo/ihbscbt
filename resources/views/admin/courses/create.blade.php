@@ -256,8 +256,8 @@
                         </div>
                         <select id="access" class="pl-1 font-semibold focus:outline-none w-full text-[#0A090B] invalid:text-[#7F8190] invalid:font-normal appearance-none bg-[url('{{asset('images/icons/arrow-down.svg')}}')] bg-no-repeat bg-right" name="access" required>
                             <option value="" disabled selected hidden>Choose the access type</option>
-                            <option value="a" class="font-semibold">Digital Marketing</option>
-                            <option value="b" class="font-semibold">Web Development</option>
+                            <option value="Invitation Only" class="font-semibold">Invitation Only</option>
+                            {{-- <option value="b" class="font-semibold">Web Development</option> --}}
                         </select>
                     </div>
                 </div>
