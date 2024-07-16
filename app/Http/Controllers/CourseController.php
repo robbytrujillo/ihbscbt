@@ -64,6 +64,8 @@ class CourseController extends Controller
             $error = ValidationException::withMessages([
                 'system_error' => ['System error!' . $e->getMessage()],
             ]);
+
+            throw $error;
         }
     }
 
