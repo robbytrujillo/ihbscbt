@@ -153,6 +153,17 @@
                 <h1 class="font-extrabold text-[30px] leading-[45px]">New Course</h1>
                 <p class="text-[#7F8190]">Provide high quality for best students</p>
             </div>
+
+            @if($errors->any())
+              <ul>
+                 @foreach($errors->all() as $error)
+                    <li class="px-5 py-5 bg-red-700 text-yellow">
+                        {{ $error }}
+                    </li>
+                 @endforeach
+              </ul>    
+            @endif
+            
             <form method="POST" action="{{ route('dashboard.courses.store') }}" class="flex flex-col gap-[30px] w-[500px] mx-[70px] mt-10">
                 @csrf
                 <div class="flex items-center gap-5">
