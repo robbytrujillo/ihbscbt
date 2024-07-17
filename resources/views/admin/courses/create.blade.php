@@ -164,7 +164,7 @@
               </ul>    
             @endif
             
-            <form method="POST" action="{{ route('dashboard.courses.store') }}" class="flex flex-col gap-[30px] w-[500px] mx-[70px] mt-10">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('dashboard.courses.store') }}" class="flex flex-col gap-[30px] w-[500px] mx-[70px] mt-10">
                 @csrf
                 <div class="flex items-center gap-5">
                     <input type="file" name="cover" id="icon" class="hidden peer" onchange="previewFile()" data-empty="true" required>
