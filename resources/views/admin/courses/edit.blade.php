@@ -168,10 +168,10 @@
                 @csrf
                 @method('PUT')
                 <div class="flex items-center gap-5">
-                    <input type="file" name="cover" id="icon" class="hidden peer" onchange="previewFile()" data-empty="true" required>
-                    <div class="relative w-[100px] h-[100px] rounded-full overflow-hidden peer-data-[empty=true]:border-[3px] peer-data-[empty=true]:border-dashed peer-data-[empty=true]:border-[#EEEEEE]">
-                        <div class="relative z-10 hidden w-full h-full file-preview">
-                            <img src="" class="object-cover w-full h-full thumbnail-icon" alt="thumbnail">
+                    <input type="file" name="cover" id="icon" class="hidden peer" onchange="previewFile()" data-empty="true">
+                    <div class="relative w-[100px] h-[100px] rounded-full overflow-hidden">
+                        <div class="relative z-10 w-full h-full file-preview">
+                            <img src="{{ Storage::url($course->cover) }}" class="object-cover w-full h-full thumbnail-icon" alt="thumbnail">
                         </div>
                         <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-center font-semibold text-sm text-[#7F8190]">Icon <br>Course</span>
                     </div>
@@ -185,7 +185,7 @@
                         <div class="mr-[14px] w-6 h-6 flex items-center justify-center overflow-hidden">
                             <img src="{{asset('images/icons/note-favorite-outline.svg')}}" class="object-contain w-full h-full" alt="icon">
                         </div>
-                        <input type="text" class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none" placeholder="Write your better course name" name="name" required>
+                        <input value="{{ $course->name }}" type="text" class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none" placeholder="Write your better course name" name="name" required>
                     </div>
                 </div>
                 <div class="group/category flex flex-col gap-[10px]">
@@ -195,7 +195,7 @@
                             <img src="{{asset('images/icons/bill.svg')}}" class="object-contain w-full h-full" alt="icon">
                         </div>
                         <select id="category" class="pl-1 font-semibold focus:outline-none w-full text-[#0A090B] invalid:text-[#7F8190] invalid:font-normal appearance-none bg-[url('{{asset('images/icons/arrow-down.svg')}}] bg-no-repeat bg-right" name="category_id" required>
-                            <option value="" disabled selected hidden>Choose one of category</option>
+                            <option value="{{ $course->category->id }}" selected>{{ $course->category->name }}</option>
                             @forelse ($categories as $category)
                                 <option value="{{ $category->id }}" class="font-semibold">{{ $category->name }}</option>    
                             @empty
