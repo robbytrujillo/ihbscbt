@@ -79,7 +79,7 @@ class CourseController extends Controller
     {
         //
         return view('admin.courses.manage', [
-            'course' => $course,
+            'course' => $course,php
         ]);
     }
 
