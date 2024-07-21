@@ -1,3 +1,3 @@
 ## CBT Information System
 
-<h2>ihbs-cbt</h2>
+<h2>Ihbs Cbt</h2>
